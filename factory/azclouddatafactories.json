@@ -1,0 +1,9 @@
+{
+	"name": "azclouddatafactories",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "55409469-0b6f-4e7b-96d5-516f32a85c51",
+		"tenantId": "d52c9ea1-7c21-47b1-82a3-33a74b1f74b8"
+	}
+}
