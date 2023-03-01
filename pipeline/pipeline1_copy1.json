@@ -118,7 +118,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"filename": {
-											"value": "@concat(pipeline().parameters.destinationloc,activity('Get Metadata1').output.itemName,activity('Get Metadata2').output.childItems))",
+											"value": "@concat(pipeline().parameters.destinationloc,activity('Get Metadata1').output.itemName,activity('Get Metadata2').output.itemName)",
 											"type": "Expression"
 										}
 									}
