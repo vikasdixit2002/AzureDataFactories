@@ -19,7 +19,7 @@
 						"referenceName": "DS_Filenames",
 						"type": "DatasetReference",
 						"parameters": {
-							"datasetfoldername": "@pipeline().parameters.pipelienfoldername"
+							"datasetfoldername": "id"
 						}
 					},
 					"fieldList": [
@@ -36,11 +36,6 @@
 				}
 			}
 		],
-		"variables": {
-			"pipelienfoldername": {
-				"type": "String"
-			}
-		},
 		"annotations": []
 	}
 }
