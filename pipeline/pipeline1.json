@@ -36,9 +36,9 @@
 				}
 			}
 		],
-		"variables": {
+		"parameters": {
 			"pipelinefoldername": {
-				"type": "String"
+				"type": "string"
 			}
 		},
 		"annotations": []
