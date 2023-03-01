@@ -36,6 +36,11 @@
 				}
 			}
 		],
+		"variables": {
+			"pipelinefoldername": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
