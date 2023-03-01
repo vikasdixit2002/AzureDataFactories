@@ -92,6 +92,46 @@
 									"type": "BinaryReadSettings"
 								}
 							}
+						},
+						{
+							"name": "Get Metadata3",
+							"type": "GetMetadata",
+							"dependsOn": [
+								{
+									"activity": "Get Metadata2",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataset": {
+									"referenceName": "ds_destination",
+									"type": "DatasetReference",
+									"parameters": {
+										"filename": {
+											"value": "@concat(pipeline().parameters.destinationloc,activity('Get Metadata1').output.itemName,activity('Get Metadata2').output.childItems))",
+											"type": "Expression"
+										}
+									}
+								},
+								"fieldList": [],
+								"storeSettings": {
+									"type": "AzureBlobFSReadSettings",
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "BinaryReadSettings"
+								}
+							}
 						}
 					]
 				}
@@ -99,6 +139,9 @@
 		],
 		"parameters": {
 			"pipelinefoldername": {
+				"type": "string"
+			},
+			"destinationloc": {
 				"type": "string"
 			}
 		},
