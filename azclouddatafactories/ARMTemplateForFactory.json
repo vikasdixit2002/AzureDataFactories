@@ -179,6 +179,49 @@
 											"type": "BinaryReadSettings"
 										}
 									}
+								},
+								{
+									"name": "Get Metadata3",
+									"type": "GetMetadata",
+									"dependsOn": [
+										{
+											"activity": "Get Metadata2",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"dataset": {
+											"referenceName": "ds_destination",
+											"type": "DatasetReference",
+											"parameters": {
+												"filename": {
+													"value": "@concat(pipeline().parameters.destinationloc,activity('Get Metadata1').output.itemName,activity('Get Metadata2').output.itemName)",
+													"type": "Expression"
+												}
+											}
+										},
+										"fieldList": [
+											"exists"
+										],
+										"storeSettings": {
+											"type": "AzureBlobFSReadSettings",
+											"recursive": true,
+											"enablePartitionDiscovery": false
+										},
+										"formatSettings": {
+											"type": "BinaryReadSettings"
+										}
+									}
 								}
 							]
 						}
@@ -191,12 +234,16 @@
 				"parameters": {
 					"pipelinefoldername": {
 						"type": "string"
+					},
+					"destinationloc": {
+						"type": "string"
 					}
 				},
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DS_Filenames')]"
+				"[concat(variables('factoryId'), '/datasets/DS_Filenames')]",
+				"[concat(variables('factoryId'), '/datasets/ds_destination')]"
 			]
 		},
 		{
@@ -223,6 +270,32 @@
 							"type": "Expression"
 						},
 						"fileSystem": "fficproddailyextract"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_ADLSGen2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_destination')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_ADLSGen2",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"filename": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation"
 					}
 				}
 			},
