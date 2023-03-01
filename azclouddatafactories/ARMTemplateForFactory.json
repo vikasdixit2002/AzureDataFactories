@@ -107,7 +107,7 @@
 								"type": "DatasetReference",
 								"parameters": {
 									"datasetfoldername": {
-										"value": "pipeline().parameters.pipelinefoldername\n",
+										"value": "@pipeline().parameters.pipelinefoldername\n",
 										"type": "Expression"
 									}
 								}
