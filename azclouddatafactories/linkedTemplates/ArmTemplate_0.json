@@ -112,6 +112,11 @@
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
 				},
+				"variables": {
+					"pipelinefoldername": {
+						"type": "String"
+					}
+				},
 				"annotations": []
 			},
 			"dependsOn": [
