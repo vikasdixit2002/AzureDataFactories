@@ -295,7 +295,11 @@
 				"type": "Binary",
 				"typeProperties": {
 					"location": {
-						"type": "AzureBlobFSLocation"
+						"type": "AzureBlobFSLocation",
+						"fileSystem": {
+							"value": "@dataset().filename",
+							"type": "Expression"
+						}
 					}
 				}
 			},
