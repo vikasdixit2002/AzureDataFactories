@@ -205,7 +205,7 @@
 											"type": "DatasetReference",
 											"parameters": {
 												"filename": {
-													"value": "@concat(pipeline().parameters.destinationloc,activity('Get Metadata1').output.itemName)",
+													"value": "@concat(pipeline().parameters.destinationloc,'\\',item().name,'\\tracking\\',utcNow('yyyy.MM.dd'),activity('Get Metadata1').output.itemName)\n",
 													"type": "Expression"
 												}
 											}
