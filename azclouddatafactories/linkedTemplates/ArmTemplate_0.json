@@ -91,7 +91,7 @@
 								"referenceName": "DS_Filenames",
 								"type": "DatasetReference",
 								"parameters": {
-									"datasetfoldername": "id"
+									"datasetfoldername": "@pipeline().parameters.pipelinefoldername"
 								}
 							},
 							"fieldList": [
