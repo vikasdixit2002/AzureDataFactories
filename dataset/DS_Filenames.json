@@ -5,6 +5,11 @@
 			"referenceName": "LS_ADLSGen2",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"datasetfoldername": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "Binary",
 		"typeProperties": {
