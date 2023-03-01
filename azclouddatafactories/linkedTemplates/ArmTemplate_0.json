@@ -314,7 +314,7 @@
 											"type": "DatasetReference",
 											"parameters": {
 												"filename": {
-													"value": "@activity('Get Metadata1').output.itemName",
+													"value": "@concat(pipeline().parameters.destinationloc,activity('Get Metadata1').output.itemName)",
 													"type": "Expression"
 												}
 											}
