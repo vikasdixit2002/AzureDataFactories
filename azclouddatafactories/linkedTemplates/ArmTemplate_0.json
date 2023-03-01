@@ -91,7 +91,10 @@
 								"referenceName": "DS_Filenames",
 								"type": "DatasetReference",
 								"parameters": {
-									"datasetfoldername": "@pipeline().parameters.pipelinefoldername"
+									"datasetfoldername": {
+										"value": "@concat(pipeline().parameters.pipelinefoldername,'/*/*/',utcNow('yyyy.MM.dd'))\n",
+										"type": "Expression"
+									}
 								}
 							},
 							"fieldList": [
