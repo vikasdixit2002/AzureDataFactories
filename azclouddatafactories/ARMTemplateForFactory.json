@@ -50,7 +50,9 @@
 								}
 							},
 							"fieldList": [
-								"childItems"
+								"childItems",
+								"itemName",
+								"exists"
 							],
 							"storeSettings": {
 								"type": "AzureBlobFSReadSettings",
