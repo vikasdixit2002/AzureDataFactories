@@ -27,7 +27,11 @@
 					},
 					"fieldList": [
 						"childItems",
-						"itemName"
+						"itemName",
+						{
+							"value": "@pipeline().parameters.pipelinefoldername",
+							"type": "Expression"
+						}
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
