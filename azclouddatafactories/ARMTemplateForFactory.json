@@ -162,7 +162,7 @@
 											"type": "DatasetReference",
 											"parameters": {
 												"datasetfoldername": {
-													"value": "@concat(pipeline().parameters.pipelinefoldername,'\\',item().name)\n",
+													"value": "@concat(pipeline().parameters.pipelinefoldername,'\\',item().name,'\\',utcNow('yyyy.MM.dd'))\n",
 													"type": "Expression"
 												}
 											}
