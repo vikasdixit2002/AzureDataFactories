@@ -124,7 +124,7 @@
 									}
 								},
 								"fieldList": [
-									"childItems"
+									"exists"
 								],
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
@@ -134,6 +134,40 @@
 								"formatSettings": {
 									"type": "BinaryReadSettings"
 								}
+							}
+						},
+						{
+							"name": "If Condition1",
+							"type": "IfCondition",
+							"dependsOn": [
+								{
+									"activity": "Get Metadata3",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@activity('Get Metadata3').output.exists",
+									"type": "Expression"
+								},
+								"ifTrueActivities": [
+									{
+										"name": "Notebook1",
+										"type": "DatabricksNotebook",
+										"dependsOn": [],
+										"policy": {
+											"timeout": "0.12:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": []
+									}
+								]
 							}
 						}
 					]

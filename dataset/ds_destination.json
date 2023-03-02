@@ -15,7 +15,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "@dataset().filename",
+				"folderPath": {
+					"value": "@dataset().filename",
+					"type": "Expression"
+				},
 				"fileSystem": "fficproddailyextract"
 			}
 		}
