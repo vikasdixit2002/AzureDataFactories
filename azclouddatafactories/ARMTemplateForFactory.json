@@ -162,7 +162,7 @@
 											"type": "DatasetReference",
 											"parameters": {
 												"datasetfoldername": {
-													"value": "@concat(pipeline().parameters.pipelinefoldername,'\\',item().name,'\\tracking\\',utcNow('yyyy.MM.dd'))\n",
+													"value": "@concat(pipeline().parameters.pipelinefoldername,'\\',item().name,'\\tracking\\','2023.03.01')\n",
 													"type": "Expression"
 												}
 											}
@@ -205,13 +205,13 @@
 											"type": "DatasetReference",
 											"parameters": {
 												"filename": {
-													"value": "@activity('Get Metadata2').output.itemName",
+													"value": "@concat(pipeline().parameters.destinationloc,'\\',item().name,'\\tracking\\','2023.03.01','\\',activity('Get Metadata2').output.childItems[0].name)",
 													"type": "Expression"
 												}
 											}
 										},
 										"fieldList": [
-											"exists"
+											"childItems"
 										],
 										"storeSettings": {
 											"type": "AzureBlobFSReadSettings",
@@ -296,10 +296,11 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"fileSystem": {
+						"folderPath": {
 							"value": "@dataset().filename",
 							"type": "Expression"
-						}
+						},
+						"fileSystem": "fficproddailyextract"
 					}
 				}
 			},
