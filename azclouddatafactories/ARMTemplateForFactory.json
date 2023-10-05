@@ -69,8 +69,7 @@
 					}
 				],
 				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
+					"elapsedTimeMetric": {}
 				},
 				"parameters": {
 					"pipelinefoldername": {
@@ -211,7 +210,7 @@
 											}
 										},
 										"fieldList": [
-											"childItems"
+											"exists"
 										],
 										"storeSettings": {
 											"type": "AzureBlobFSReadSettings",
@@ -222,14 +221,32 @@
 											"type": "BinaryReadSettings"
 										}
 									}
+								},
+								{
+									"name": "If Condition1",
+									"type": "IfCondition",
+									"dependsOn": [
+										{
+											"activity": "Get Metadata3",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"userProperties": [],
+									"typeProperties": {
+										"expression": {
+											"value": "@activity('Get Metadata3').output.exists",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
 					}
 				],
 				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
+					"elapsedTimeMetric": {}
 				},
 				"parameters": {
 					"pipelinefoldername": {
@@ -245,6 +262,44 @@
 				"[concat(variables('factoryId'), '/datasets/DS_Filenames')]",
 				"[concat(variables('factoryId'), '/datasets/ds_destination')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline2')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Set variable1",
+						"type": "SetVariable",
+						"dependsOn": [],
+						"policy": {
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "variable1",
+							"value": "123"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"paramater1": {
+						"type": "string"
+					}
+				},
+				"variables": {
+					"variable1": {
+						"type": "String"
+					}
+				},
+				"annotations": []
+			},
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_Filenames')]",
