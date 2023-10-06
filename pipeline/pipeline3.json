@@ -55,6 +55,10 @@
 							"sourcefolder_ds": {
 								"value": "@pipeline().parameters.sourcefolder",
 								"type": "Expression"
+							},
+							"filename": {
+								"value": "@pipeline().parameters.filename",
+								"type": "Expression"
 							}
 						}
 					}
