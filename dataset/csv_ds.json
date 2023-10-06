@@ -3,16 +3,13 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "csv_ls",
-			"type": "LinkedServiceReference",
-			"parameters": {
-				"sourcefolder_ls": {
-					"value": "@dataset().sourcefolder_ds",
-					"type": "Expression"
-				}
-			}
+			"type": "LinkedServiceReference"
 		},
 		"parameters": {
 			"sourcefolder_ds": {
+				"type": "string"
+			},
+			"filename": {
 				"type": "string"
 			}
 		},
@@ -20,7 +17,15 @@
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobFSLocation"
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().filename",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().sourcefolder_ds",
+					"type": "Expression"
+				}
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
