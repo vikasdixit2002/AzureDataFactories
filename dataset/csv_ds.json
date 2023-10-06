@@ -3,7 +3,18 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "csv_ls",
-			"type": "LinkedServiceReference"
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"sourcefolder_ls": {
+					"value": "@dataset().sourcefolder_ds",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"sourcefolder_ds": {
+				"type": "string"
+			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
