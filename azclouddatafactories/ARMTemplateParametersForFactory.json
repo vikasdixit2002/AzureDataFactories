@@ -5,8 +5,17 @@
 		"factoryName": {
 			"value": "azclouddatafactories"
 		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDatabricks1_accessToken": {
+			"value": ""
+		},
 		"LS_ADLSGen2_accountKey": {
 			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://azstoragegen2.dfs.core.windows.net/"
 		},
 		"LS_ADLSGen2_properties_typeProperties_url": {
 			"value": "https://azstoragegen2.dfs.core.windows.net/"
