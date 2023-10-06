@@ -71,7 +71,8 @@
 							"sourcefolder_ds": {
 								"value": "@pipeline().parameters.sinkfolder",
 								"type": "Expression"
-							}
+							},
+							"filename": "@pipeline().parameters.filename"
 						}
 					}
 				]
