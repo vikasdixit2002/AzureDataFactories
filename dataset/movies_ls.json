@@ -2,14 +2,16 @@
 	"name": "movies_ls",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "movies_ls",
+			"referenceName": "mobies_ls1",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobFSLocation"
+				"type": "AzureBlobFSLocation",
+				"fileName": "movies_metadata (1).csv",
+				"fileSystem": "moviesource"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
