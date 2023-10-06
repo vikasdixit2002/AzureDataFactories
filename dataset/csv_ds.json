@@ -22,7 +22,8 @@
 					"value": "@dataset().filename",
 					"type": "Expression"
 				},
-				"fileSystem": "@dataset().sourcefolder_ds"
+				"folderPath": "@dataset().sourcefolder_ds",
+				"fileSystem": "moviesource"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
