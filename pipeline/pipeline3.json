@@ -57,7 +57,7 @@
 								"type": "Expression"
 							},
 							"filename": {
-								"value": "@pipeline().parameters.filename",
+								"value": "@concat('movies_',formatDateTime(utcnow(),'yyyMMdd'),'.csv')",
 								"type": "Expression"
 							}
 						}
@@ -72,7 +72,7 @@
 								"value": "@pipeline().parameters.sinkfolder",
 								"type": "Expression"
 							},
-							"filename": "@pipeline().parameters.filename"
+							"filename": "@concat('movies_',formatDateTime(utcnow(),'yyyMMdd'),'.csv')"
 						}
 					}
 				]
@@ -83,9 +83,6 @@
 				"type": "string"
 			},
 			"sinkfolder": {
-				"type": "string"
-			},
-			"filename": {
 				"type": "string"
 			}
 		},
