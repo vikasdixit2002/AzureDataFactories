@@ -8,13 +8,31 @@
 		"parameters": {
 			"loc_ds": {
 				"type": "string"
+			},
+			"containername_ds": {
+				"type": "string"
+			},
+			"filename_fs": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
 		"type": "Json",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobFSLocation"
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().filename_fs",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().loc_ds",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().containername_ds",
+					"type": "Expression"
+				}
 			}
 		},
 		"schema": {}
