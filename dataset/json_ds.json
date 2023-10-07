@@ -1,0 +1,22 @@
+{
+	"name": "json_ds",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "json_ls",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"loc_ds": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation"
+			}
+		},
+		"schema": {}
+	}
+}
