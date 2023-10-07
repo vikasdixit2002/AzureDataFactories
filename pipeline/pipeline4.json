@@ -51,7 +51,7 @@
 								"type": "Expression"
 							},
 							"filename_fs": {
-								"value": "@concat('movies_', formatDateTime(utcnow(),'yyyyMMdd'),'json') ",
+								"value": "@concat('movies_', formatDateTime(utcnow(),'yyyyMMdd'),'.json') ",
 								"type": "Expression"
 							}
 						}
@@ -71,7 +71,7 @@
 								"type": "Expression"
 							},
 							"filename_fs": {
-								"value": "@concat('movies_', formatDateTime(utcnow(),'yyyyMMdd'),'json') ",
+								"value": "@concat('movies_', formatDateTime(utcnow(),'yyyyMMdd'),'.json') ",
 								"type": "Expression"
 							}
 						}
