@@ -19,7 +19,6 @@
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
 			"blobPathBeginsWith": "/movies/blobs/",
-			"blobPathEndsWith": "json",
 			"ignoreEmptyBlobs": true,
 			"scope": "/subscriptions/5ff8fe8f-597e-4676-ae24-d0114dfb055a/resourceGroups/az_storage/providers/Microsoft.Storage/storageAccounts/azstoragegen2",
 			"events": [
