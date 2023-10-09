@@ -7,9 +7,9 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "azclouddatafactories"
 		},
-		"tub1_properties_pipeline_parameters_parvar1": {
+		"tw_properties_pipeline_parameters_parvar1": {
 			"type": "string",
-			"defaultValue": "test"
+			"defaultValue": " test"
 		}
 	},
 	"variables": {
@@ -17,7 +17,7 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/tub1')]",
+			"name": "[concat(parameters('factoryName'), '/tw')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -29,15 +29,15 @@
 						"type": "PipelineReference"
 					},
 					"parameters": {
-						"parvar1": "[parameters('tub1_properties_pipeline_parameters_parvar1')]"
+						"parvar1": "[parameters('tw_properties_pipeline_parameters_parvar1')]"
 					}
 				},
 				"type": "TumblingWindowTrigger",
 				"typeProperties": {
 					"frequency": "Minute",
 					"interval": 5,
-					"startTime": "2023-10-09T17:40:00Z",
-					"delay": "00:03:00",
+					"startTime": "2023-10-09T18:13:00Z",
+					"delay": "00:02:00",
 					"maxConcurrency": 50,
 					"retryPolicy": {
 						"intervalInSeconds": 30

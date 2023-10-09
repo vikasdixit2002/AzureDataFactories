@@ -75,9 +75,9 @@
 			"type": "string",
 			"defaultValue": "https://azstoragegen2.dfs.core.windows.net/"
 		},
-		"tub1_properties_pipeline_parameters_parvar1": {
+		"tw_properties_pipeline_parameters_parvar1": {
 			"type": "string",
-			"defaultValue": "test"
+			"defaultValue": " test"
 		},
 		"containerUri": {
 			"type": "string",
@@ -175,8 +175,8 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"tub1_properties_pipeline_parameters_parvar1": {
-						"value": "[parameters('tub1_properties_pipeline_parameters_parvar1')]"
+					"tw_properties_pipeline_parameters_parvar1": {
+						"value": "[parameters('tw_properties_pipeline_parameters_parvar1')]"
 					}
 				}
 			},
