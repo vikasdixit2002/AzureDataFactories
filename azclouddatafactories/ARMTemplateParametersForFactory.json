@@ -20,6 +20,9 @@
 		"csv_ls_accountKey": {
 			"value": ""
 		},
+		"json_ls_accountKey": {
+			"value": ""
+		},
 		"mobies_ls1_accountKey": {
 			"value": ""
 		},
@@ -41,6 +44,9 @@
 		"csv_ls_properties_typeProperties_url": {
 			"value": "https://azstoragegen2.dfs.core.windows.net/"
 		},
+		"json_ls_properties_typeProperties_url": {
+			"value": "https://azstoragegen2.dfs.core.windows.net/"
+		},
 		"mobies_ls1_properties_typeProperties_url": {
 			"value": "https://azstoragegen2.dfs.core.windows.net/"
 		},
@@ -50,17 +56,8 @@
 		"movies_ls_sink_properties_typeProperties_url": {
 			"value": "https://azstoragegen2.dfs.core.windows.net/"
 		},
-		"trigger1_properties_pipeline3_parameters_sourcefolder": {
-			"value": "source"
-		},
-		"trigger1_properties_pipeline3_parameters_sinkfolder": {
-			"value": "sink"
-		},
-		"trigger1_properties_pipeline3_parameters_filename": {
-			"value": "@triggerbody().filename"
-		},
-		"trigger1_properties_typeProperties_scope": {
-			"value": "/subscriptions/5ff8fe8f-597e-4676-ae24-d0114dfb055a/resourceGroups/az_storage/providers/Microsoft.Storage/storageAccounts/azstoragegen2"
+		"tub1_properties_pipeline_parameters_parvar1": {
+			"value": "test"
 		}
 	}
 }

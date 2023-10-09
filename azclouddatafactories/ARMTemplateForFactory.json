@@ -27,6 +27,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'csv_ls'"
 		},
+		"json_ls_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'json_ls'"
+		},
 		"mobies_ls1_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'mobies_ls1'"
@@ -55,6 +59,10 @@
 			"type": "string",
 			"defaultValue": "https://azstoragegen2.dfs.core.windows.net/"
 		},
+		"json_ls_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azstoragegen2.dfs.core.windows.net/"
+		},
 		"mobies_ls1_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://azstoragegen2.dfs.core.windows.net/"
@@ -67,21 +75,9 @@
 			"type": "string",
 			"defaultValue": "https://azstoragegen2.dfs.core.windows.net/"
 		},
-		"trigger1_properties_pipeline3_parameters_sourcefolder": {
+		"tub1_properties_pipeline_parameters_parvar1": {
 			"type": "string",
-			"defaultValue": "source"
-		},
-		"trigger1_properties_pipeline3_parameters_sinkfolder": {
-			"type": "string",
-			"defaultValue": "sink"
-		},
-		"trigger1_properties_pipeline3_parameters_filename": {
-			"type": "string",
-			"defaultValue": "@triggerbody().filename"
-		},
-		"trigger1_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/5ff8fe8f-597e-4676-ae24-d0114dfb055a/resourceGroups/az_storage/providers/Microsoft.Storage/storageAccounts/azstoragegen2"
+			"defaultValue": "test"
 		}
 	},
 	"variables": {
@@ -452,106 +448,45 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/pipeline3')]",
+			"name": "[concat(parameters('factoryName'), '/pipeline6')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"activities": [
 					{
-						"name": "Copy data1",
-						"type": "Copy",
+						"name": "Set variable1",
+						"type": "SetVariable",
 						"dependsOn": [],
 						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
 							"secureOutput": false,
 							"secureInput": false
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobFSReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "DelimitedTextSink",
-								"storeSettings": {
-									"type": "AzureBlobFSWriteSettings"
-								},
-								"formatSettings": {
-									"type": "DelimitedTextWriteSettings",
-									"quoteAllText": true,
-									"fileExtension": ".txt"
-								}
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
+							"variableName": "var1",
+							"value": {
+								"value": "@pipeline().parameters.parvar1",
+								"type": "Expression"
 							}
-						},
-						"inputs": [
-							{
-								"referenceName": "csv_ds",
-								"type": "DatasetReference",
-								"parameters": {
-									"sourcefolder_ds": {
-										"value": "@pipeline().parameters.sourcefolder",
-										"type": "Expression"
-									},
-									"filename": {
-										"value": "@pipeline().parameters.filename",
-										"type": "Expression"
-									}
-								}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "csv_ds",
-								"type": "DatasetReference",
-								"parameters": {
-									"sourcefolder_ds": {
-										"value": "@pipeline().parameters.sinkfolder",
-										"type": "Expression"
-									},
-									"filename": "@pipeline().parameters.filename"
-								}
-							}
-						]
+						}
 					}
 				],
 				"policy": {
 					"elapsedTimeMetric": {}
 				},
 				"parameters": {
-					"sourcefolder": {
+					"parvar1": {
 						"type": "string"
-					},
-					"sinkfolder": {
-						"type": "string"
-					},
-					"filename": {
-						"type": "string"
+					}
+				},
+				"variables": {
+					"var1": {
+						"type": "String"
 					}
 				},
 				"annotations": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/csv_ds')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_Filenames')]",
@@ -717,6 +652,51 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/json_ds')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "json_ls",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"loc_ds": {
+						"type": "string"
+					},
+					"containername_ds": {
+						"type": "string"
+					},
+					"filename_fs": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().filename_fs",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@dataset().loc_ds",
+							"type": "Expression"
+						},
+						"fileSystem": {
+							"value": "@dataset().containername_ds",
+							"type": "Expression"
+						}
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/json_ls')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/movies_ls')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -865,6 +845,23 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/json_ls')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('json_ls_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('json_ls_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/mobies_ls1')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -916,38 +913,36 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/trigger1')]",
+			"name": "[concat(parameters('factoryName'), '/tub1')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Stopped",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "pipeline3",
-							"type": "PipelineReference"
-						},
-						"parameters": {
-							"sourcefolder": "[parameters('trigger1_properties_pipeline3_parameters_sourcefolder')]",
-							"sinkfolder": "[parameters('trigger1_properties_pipeline3_parameters_sinkfolder')]",
-							"filename": "[parameters('trigger1_properties_pipeline3_parameters_filename')]"
-						}
+				"runtimeState": "Started",
+				"pipeline": {
+					"pipelineReference": {
+						"referenceName": "pipeline6",
+						"type": "PipelineReference"
+					},
+					"parameters": {
+						"parvar1": "[parameters('tub1_properties_pipeline_parameters_parvar1')]"
 					}
-				],
-				"type": "BlobEventsTrigger",
+				},
+				"type": "TumblingWindowTrigger",
 				"typeProperties": {
-					"blobPathBeginsWith": "/moviesource/blobs/",
-					"blobPathEndsWith": "csv",
-					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('trigger1_properties_typeProperties_scope')]",
-					"events": [
-						"Microsoft.Storage.BlobCreated"
-					]
+					"frequency": "Minute",
+					"interval": 5,
+					"startTime": "2023-10-09T17:40:00Z",
+					"delay": "00:00:00",
+					"maxConcurrency": 50,
+					"retryPolicy": {
+						"intervalInSeconds": 30
+					},
+					"dependsOn": []
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/pipeline3')]"
+				"[concat(variables('factoryId'), '/pipelines/pipeline6')]"
 			]
 		},
 		{
