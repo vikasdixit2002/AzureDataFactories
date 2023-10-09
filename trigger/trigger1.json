@@ -3,19 +3,7 @@
 	"properties": {
 		"annotations": [],
 		"runtimeState": "Stopped",
-		"pipelines": [
-			{
-				"pipelineReference": {
-					"referenceName": "pipeline3",
-					"type": "PipelineReference"
-				},
-				"parameters": {
-					"sourcefolder": "source",
-					"sinkfolder": "sink",
-					"filename": "@triggerbody().filename"
-				}
-			}
-		],
+		"pipelines": [],
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
 			"blobPathBeginsWith": "/moviesource/blobs/",
