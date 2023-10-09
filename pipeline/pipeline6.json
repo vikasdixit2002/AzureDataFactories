@@ -1,0 +1,35 @@
+{
+	"name": "pipeline6",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "var1",
+					"value": {
+						"value": "@pipeline().parameters.parvar1",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"parvar1": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"var1": {
+				"type": "String"
+			}
+		},
+		"annotations": []
+	}
+}

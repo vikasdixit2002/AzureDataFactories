@@ -1,0 +1,28 @@
+{
+	"name": "tub1",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipeline": {
+			"pipelineReference": {
+				"referenceName": "pipeline6",
+				"type": "PipelineReference"
+			},
+			"parameters": {
+				"parvar1": "test"
+			}
+		},
+		"type": "TumblingWindowTrigger",
+		"typeProperties": {
+			"frequency": "Minute",
+			"interval": 5,
+			"startTime": "2023-10-09T17:42:00Z",
+			"delay": "00:03:00",
+			"maxConcurrency": 50,
+			"retryPolicy": {
+				"intervalInSeconds": 30
+			},
+			"dependsOn": []
+		}
+	}
+}
