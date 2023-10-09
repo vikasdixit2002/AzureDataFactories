@@ -8,6 +8,9 @@
 				"pipelineReference": {
 					"referenceName": "pipeline6",
 					"type": "PipelineReference"
+				},
+				"parameters": {
+					"parvar1": "test"
 				}
 			}
 		],
