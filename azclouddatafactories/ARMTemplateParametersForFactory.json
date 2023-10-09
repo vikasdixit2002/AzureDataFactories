@@ -55,9 +55,6 @@
 		},
 		"movies_ls_sink_properties_typeProperties_url": {
 			"value": "https://azstoragegen2.dfs.core.windows.net/"
-		},
-		"trigger1_properties_pipeline_parameters_parvar1": {
-			"value": "test"
 		}
 	}
 }

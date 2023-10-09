@@ -75,10 +75,6 @@
 			"type": "string",
 			"defaultValue": "https://azstoragegen2.dfs.core.windows.net/"
 		},
-		"trigger1_properties_pipeline_parameters_parvar1": {
-			"type": "string",
-			"defaultValue": "test"
-		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -174,9 +170,6 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
-					},
-					"trigger1_properties_pipeline_parameters_parvar1": {
-						"value": "[parameters('trigger1_properties_pipeline_parameters_parvar1')]"
 					}
 				}
 			},
