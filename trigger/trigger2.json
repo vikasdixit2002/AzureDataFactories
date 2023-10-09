@@ -3,19 +3,7 @@
 	"properties": {
 		"annotations": [],
 		"runtimeState": "Started",
-		"pipelines": [
-			{
-				"pipelineReference": {
-					"referenceName": "pipeline4",
-					"type": "PipelineReference"
-				},
-				"parameters": {
-					"source": "source",
-					"sink": "sink",
-					"containername": "movies"
-				}
-			}
-		],
+		"pipelines": [],
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
 			"blobPathBeginsWith": "/movies/blobs/",
