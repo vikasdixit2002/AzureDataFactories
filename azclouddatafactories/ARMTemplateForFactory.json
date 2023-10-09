@@ -75,9 +75,9 @@
 			"type": "string",
 			"defaultValue": "https://azstoragegen2.dfs.core.windows.net/"
 		},
-		"tw_properties_pipeline_parameters_parvar1": {
+		"trigger1_properties_pipeline_parameters_parvar1": {
 			"type": "string",
-			"defaultValue": " test"
+			"defaultValue": "test"
 		}
 	},
 	"variables": {
@@ -913,7 +913,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/tw')]",
+			"name": "[concat(parameters('factoryName'), '/trigger1')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -925,16 +925,16 @@
 						"type": "PipelineReference"
 					},
 					"parameters": {
-						"parvar1": "[parameters('tw_properties_pipeline_parameters_parvar1')]"
+						"parvar1": "[parameters('trigger1_properties_pipeline_parameters_parvar1')]"
 					}
 				},
 				"type": "TumblingWindowTrigger",
 				"typeProperties": {
-					"frequency": "Minute",
-					"interval": 5,
-					"startTime": "2023-10-09T18:13:00Z",
-					"delay": "00:02:00",
-					"maxConcurrency": 50,
+					"frequency": "Hour",
+					"interval": 1,
+					"startTime": "2023-10-08T17:30:00Z",
+					"delay": "00:00:00",
+					"maxConcurrency": 24,
 					"retryPolicy": {
 						"intervalInSeconds": 30
 					},
