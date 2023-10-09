@@ -17,7 +17,7 @@
 			"frequency": "Minute",
 			"interval": 5,
 			"startTime": "2023-10-09T17:40:00Z",
-			"delay": "00:00:00",
+			"delay": "00:03:00",
 			"maxConcurrency": 50,
 			"retryPolicy": {
 				"intervalInSeconds": 30
