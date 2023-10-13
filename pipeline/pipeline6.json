@@ -26,18 +26,59 @@
 							"type": "JsonReadSettings"
 						}
 					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
 					"enableStaging": false
 				},
 				"inputs": [
 					{
 						"referenceName": "ls_movies_jjson_properties",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"foldername": {
+								"value": "@pipeline().parameters.source",
+								"type": "Expression"
+							},
+							"containername": {
+								"value": "@pipeline().parameters.containername",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ls_movies_jjson_properties",
+						"type": "DatasetReference",
+						"parameters": {
+							"foldername": {
+								"value": "@pipeline().parameters.sink",
+								"type": "Expression"
+							},
+							"containername": {
+								"value": "@pipeline().parameters.containername",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
 		],
 		"parameters": {
-			"parvar1": {
+			"containername": {
+				"type": "string"
+			},
+			"source": {
+				"type": "string"
+			},
+			"sink": {
 				"type": "string"
 			}
 		},
