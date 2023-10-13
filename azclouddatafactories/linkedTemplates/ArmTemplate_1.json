@@ -300,7 +300,7 @@
 									"type": "AzureBlobFSReadSettings",
 									"recursive": true,
 									"wildcardFolderPath": {
-										"value": "@formatDateTime(utcnow(),'ddmmyyyy')",
+										"value": "@formatDateTime(utcnow(),'ddMMyyyy')",
 										"type": "Expression"
 									},
 									"wildcardFileName": "*.json",
