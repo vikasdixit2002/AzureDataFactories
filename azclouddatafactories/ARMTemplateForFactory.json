@@ -519,7 +519,7 @@
 								"type": "DatasetReference",
 								"parameters": {
 									"foldername": {
-										"value": "@pipeline().parameters.sink",
+										"value": "@concat( pipeline().parameters.sink,'/',formatDateTime(utcnow(),'ddMMyyyy'))",
 										"type": "Expression"
 									},
 									"containername": {
