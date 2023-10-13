@@ -23,6 +23,9 @@
 		"json_ls_accountKey": {
 			"value": ""
 		},
+		"ls_movies_json_accountKey": {
+			"value": ""
+		},
 		"mobies_ls1_accountKey": {
 			"value": ""
 		},
@@ -45,6 +48,9 @@
 			"value": "https://azstoragegen2.dfs.core.windows.net/"
 		},
 		"json_ls_properties_typeProperties_url": {
+			"value": "https://azstoragegen2.dfs.core.windows.net/"
+		},
+		"ls_movies_json_properties_typeProperties_url": {
 			"value": "https://azstoragegen2.dfs.core.windows.net/"
 		},
 		"mobies_ls1_properties_typeProperties_url": {

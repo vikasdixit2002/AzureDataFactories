@@ -31,6 +31,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'json_ls'"
 		},
+		"ls_movies_json_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_movies_json'"
+		},
 		"mobies_ls1_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'mobies_ls1'"
@@ -60,6 +64,10 @@
 			"defaultValue": "https://azstoragegen2.dfs.core.windows.net/"
 		},
 		"json_ls_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azstoragegen2.dfs.core.windows.net/"
+		},
+		"ls_movies_json_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://azstoragegen2.dfs.core.windows.net/"
 		},
@@ -111,47 +119,6 @@
 				},
 				"variables": {
 					"variable1": {
-						"type": "String"
-					}
-				},
-				"annotations": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/pipeline6')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Set variable1",
-						"type": "SetVariable",
-						"dependsOn": [],
-						"policy": {
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"variableName": "var1",
-							"value": {
-								"value": "@pipeline().parameters.parvar1",
-								"type": "Expression"
-							}
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"parameters": {
-					"parvar1": {
-						"type": "string"
-					}
-				},
-				"variables": {
-					"var1": {
 						"type": "String"
 					}
 				},
@@ -264,6 +231,23 @@
 					"accountKey": {
 						"type": "SecureString",
 						"value": "[parameters('json_ls_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_movies_json')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('ls_movies_json_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('ls_movies_json_accountKey')]"
 					}
 				}
 			},
@@ -565,6 +549,44 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/ls_movies_jjson_properties')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_movies_json",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"foldername": {
+						"type": "string"
+					},
+					"containername": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": {
+							"value": "@dataset().foldername",
+							"type": "Expression"
+						},
+						"fileSystem": {
+							"value": "@dataset().containername",
+							"type": "Expression"
+						}
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_movies_json')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/movies_ls')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -590,33 +612,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/mobies_ls1')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/movies_ls_sink')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "movies_ls_sink",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileSystem": "moviesink"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/movies_ls_sink')]"
 			]
 		}
 	]
