@@ -73,7 +73,7 @@
 							"typeProperties": {
 								"source": {
 									"type": "AzureSqlSource",
-									"sqlReaderQuery": "insert into logs(msg)values('No Files Found')",
+									"sqlReaderQuery": "insert into logs(msg)values('No Files Found')\nreturn 0",
 									"queryTimeout": "02:00:00",
 									"partitionOption": "None"
 								},
