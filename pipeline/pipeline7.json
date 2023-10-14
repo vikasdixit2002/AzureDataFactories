@@ -82,6 +82,9 @@
 		"parameters": {
 			"parameter_Container": {
 				"type": "string"
+			},
+			"parameter_foldername": {
+				"type": "string"
 			}
 		},
 		"annotations": []
