@@ -22,6 +22,10 @@
 							"containername": {
 								"value": "@pipeline().parameters.parameter_Container",
 								"type": "Expression"
+							},
+							"foldername": {
+								"value": "@pipeline().parameters.parameter_foldername",
+								"type": "Expression"
 							}
 						}
 					},
