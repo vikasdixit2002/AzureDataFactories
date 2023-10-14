@@ -53,7 +53,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@activity('Get Metadata1').output.exists",
+						"value": "@greater(activity('Get Metadata1').output.childItems, 0) ",
 						"type": "Expression"
 					},
 					"ifFalseActivities": [
