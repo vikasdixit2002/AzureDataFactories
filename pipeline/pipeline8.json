@@ -17,6 +17,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"items": {
+				"type": "array"
+			}
+		},
 		"variables": {
 			"test": {
 				"type": "String"
