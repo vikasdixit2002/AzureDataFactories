@@ -1,0 +1,26 @@
+{
+	"name": "Excel1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnkService_MoviesDataset",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"containername": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": {
+					"value": "@dataset().containername",
+					"type": "Expression"
+				}
+			}
+		},
+		"schema": []
+	}
+}
