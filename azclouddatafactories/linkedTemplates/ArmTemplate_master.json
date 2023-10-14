@@ -19,6 +19,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks1'"
 		},
+		"AzureSqlDatabase1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
+		},
 		"LS_ADLSGen2_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_ADLSGen2'"
@@ -30,6 +34,10 @@
 		"json_ls_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'json_ls'"
+		},
+		"lnkService_MoviesDataset_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'lnkService_MoviesDataset'"
 		},
 		"ls_movies_json_accountKey": {
 			"type": "secureString",
@@ -64,6 +72,10 @@
 			"defaultValue": "https://azstoragegen2.dfs.core.windows.net/"
 		},
 		"json_ls_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azstoragegen2.dfs.core.windows.net/"
+		},
+		"lnkService_MoviesDataset_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://azstoragegen2.dfs.core.windows.net/"
 		},
@@ -119,6 +131,9 @@
 					"AzureDatabricks1_accessToken": {
 						"value": "[parameters('AzureDatabricks1_accessToken')]"
 					},
+					"AzureSqlDatabase1_connectionString": {
+						"value": "[parameters('AzureSqlDatabase1_connectionString')]"
+					},
 					"LS_ADLSGen2_accountKey": {
 						"value": "[parameters('LS_ADLSGen2_accountKey')]"
 					},
@@ -127,6 +142,9 @@
 					},
 					"json_ls_accountKey": {
 						"value": "[parameters('json_ls_accountKey')]"
+					},
+					"lnkService_MoviesDataset_accountKey": {
+						"value": "[parameters('lnkService_MoviesDataset_accountKey')]"
 					},
 					"ls_movies_json_accountKey": {
 						"value": "[parameters('ls_movies_json_accountKey')]"
@@ -154,6 +172,9 @@
 					},
 					"json_ls_properties_typeProperties_url": {
 						"value": "[parameters('json_ls_properties_typeProperties_url')]"
+					},
+					"lnkService_MoviesDataset_properties_typeProperties_url": {
+						"value": "[parameters('lnkService_MoviesDataset_properties_typeProperties_url')]"
 					},
 					"ls_movies_json_properties_typeProperties_url": {
 						"value": "[parameters('ls_movies_json_properties_typeProperties_url')]"
