@@ -572,7 +572,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"expression": {
-								"value": "@greater(activity('Get Metadata1').output.childItems, 0) ",
+								"value": "@greater(length(activity('Get Metadata1').output.childItems), 0) ",
 								"type": "Expression"
 							},
 							"ifFalseActivities": [
