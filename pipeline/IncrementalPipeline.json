@@ -56,11 +56,19 @@
 								"secureOutput": false,
 								"secureInput": false
 							},
-							"userProperties": [],
+							"userProperties": [
+								{
+									"name": "tablename",
+									"value": "@item().tablename"
+								}
+							],
 							"typeProperties": {
 								"source": {
 									"type": "AzureSqlSource",
-									"sqlReaderQuery": "select * from [dbo].@{item().tablename} where @{item().startdate} between @{item().startdate} and @{item().enddate}",
+									"sqlReaderQuery": {
+										"value": "select * from [dbo].@{item().tablename} where @{item().startdate} between @{item().startdate} and @{item().enddate}",
+										"type": "Expression"
+									},
 									"queryTimeout": "02:00:00",
 									"partitionOption": "None"
 								},
