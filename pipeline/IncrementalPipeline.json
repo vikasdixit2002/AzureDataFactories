@@ -96,7 +96,7 @@
 									"referenceName": "dynamicsqltable",
 									"type": "DatasetReference",
 									"parameters": {
-										"tablename": "@item().tablename"
+										"tablename": "@item().desttablename"
 									}
 								}
 							]
