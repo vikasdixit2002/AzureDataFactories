@@ -17,6 +17,9 @@
 		"AzureSqlDatabase1_connectionString": {
 			"value": ""
 		},
+		"AzureSqlDatabase2_connectionString": {
+			"value": ""
+		},
 		"LS_ADLSGen2_accountKey": {
 			"value": ""
 		},
