@@ -30,7 +30,14 @@
 			{
 				"name": "ForEach1",
 				"type": "ForEach",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "ForEach2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
@@ -144,7 +151,7 @@
 						"value": "@activity('From Config Table').output",
 						"type": "Expression"
 					},
-					"batchCount": 1,
+					"isSequential": true,
 					"activities": [
 						{
 							"name": "Set variable2",
