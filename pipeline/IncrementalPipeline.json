@@ -44,10 +44,13 @@
 						"value": "@activity('From Config Table').output",
 						"type": "Expression"
 					},
+					"batchCount": 1,
 					"activities": [
 						{
 							"name": "Copy data1",
 							"type": "Copy",
+							"state": "Inactive",
+							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [
 								{
 									"activity": "Set variable1",
@@ -128,7 +131,7 @@
 							"typeProperties": {
 								"variableName": "tablenamevar",
 								"value": {
-									"value": "@item().tablename",
+									"value": "@item()",
 									"type": "Expression"
 								}
 							}
