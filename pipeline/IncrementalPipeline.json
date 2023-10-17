@@ -93,8 +93,11 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "ConfigTable",
-									"type": "DatasetReference"
+									"referenceName": "dynamicsqltable",
+									"type": "DatasetReference",
+									"parameters": {
+										"tablename": "@item().tablename"
+									}
 								}
 							]
 						}
