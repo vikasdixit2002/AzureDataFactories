@@ -60,6 +60,7 @@
 							"typeProperties": {
 								"source": {
 									"type": "AzureSqlSource",
+									"sqlReaderQuery": "select * from [dbo].@{item().tablename} where @item().startdate between @{item().startdate} and @{item().enddate}",
 									"queryTimeout": "02:00:00",
 									"partitionOption": "None"
 								},
@@ -81,7 +82,13 @@
 							"inputs": [
 								{
 									"referenceName": "dynamicsqltable",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"tablename": {
+											"value": "@item().tablename",
+											"type": "Expression"
+										}
+									}
 								}
 							],
 							"outputs": [
