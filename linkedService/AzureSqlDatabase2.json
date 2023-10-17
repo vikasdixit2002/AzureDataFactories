@@ -1,0 +1,12 @@
+{
+	"name": "AzureSqlDatabase2",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=sqlmidatabaseserver.database.windows.net;initial catalog=incremnetaldb;user id=CloudSA78e7f6ef",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDg3RDZFQTI2LTEyQUYtNEI3RC1BNjdCLTQ4OUVEQjE1NjEyQl9mYjIyOTVhZS0xZmYyLTQ5YTUtYmUxMy02ZjI2NTdjZjI4ZDciDQp9"
+		}
+	}
+}
