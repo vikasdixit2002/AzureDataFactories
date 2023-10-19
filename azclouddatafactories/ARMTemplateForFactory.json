@@ -183,113 +183,6 @@
 						}
 					},
 					{
-						"name": "ForEach1",
-						"type": "ForEach",
-						"dependsOn": [
-							{
-								"activity": "ForEach2",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "@activity('From Config Table').output",
-								"type": "Expression"
-							},
-							"batchCount": 1,
-							"activities": [
-								{
-									"name": "Copy data1",
-									"type": "Copy",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Succeeded",
-									"dependsOn": [
-										{
-											"activity": "Set variable1",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"policy": {
-										"timeout": "0.12:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"source": {
-											"type": "AzureSqlSource",
-											"sqlReaderQuery": {
-												"value": "select * from [dbo].@{item().tablename} where @{item().startdate} between @{item().startdate} and @{item().enddate}",
-												"type": "Expression"
-											},
-											"queryTimeout": "02:00:00",
-											"partitionOption": "None"
-										},
-										"sink": {
-											"type": "AzureSqlSink",
-											"writeBehavior": "insert",
-											"sqlWriterUseTableLock": false
-										},
-										"enableStaging": false,
-										"translator": {
-											"type": "TabularTranslator",
-											"typeConversion": true,
-											"typeConversionSettings": {
-												"allowDataTruncation": true,
-												"treatBooleanAsNumber": false
-											}
-										}
-									},
-									"inputs": [
-										{
-											"referenceName": "dynamicsqltable",
-											"type": "DatasetReference",
-											"parameters": {
-												"tablename": {
-													"value": "@item().tablename",
-													"type": "Expression"
-												}
-											}
-										}
-									],
-									"outputs": [
-										{
-											"referenceName": "dynamicsqltable",
-											"type": "DatasetReference",
-											"parameters": {
-												"tablename": "@item().desttablename"
-											}
-										}
-									]
-								},
-								{
-									"name": "Set variable1",
-									"type": "SetVariable",
-									"dependsOn": [],
-									"policy": {
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"variableName": "tablenamevar",
-										"value": {
-											"value": "@item()",
-											"type": "Expression"
-										}
-									}
-								}
-							]
-						}
-					},
-					{
 						"name": "ForEach2",
 						"type": "ForEach",
 						"dependsOn": [
@@ -320,7 +213,7 @@
 									"typeProperties": {
 										"variableName": "tablenamevar",
 										"value": {
-											"value": "@item().name",
+											"value": "@item().tablename",
 											"type": "Expression"
 										}
 									}
@@ -340,8 +233,7 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/ConfigTable')]",
-				"[concat(variables('factoryId'), '/datasets/dynamicsqltable')]"
+				"[concat(variables('factoryId'), '/datasets/ConfigTable')]"
 			]
 		},
 		{
