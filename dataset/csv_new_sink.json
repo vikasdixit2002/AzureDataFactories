@@ -1,25 +1,16 @@
 {
-	"name": "csv_ds_new",
+	"name": "csv_new_sink",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "csv_lnk_new",
 			"type": "LinkedServiceReference"
-		},
-		"parameters": {
-			"filename": {
-				"type": "string"
-			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": {
-					"value": "@dataset().filename",
-					"type": "Expression"
-				},
-				"folderPath": "source",
+				"folderPath": "sink",
 				"fileSystem": "movies"
 			},
 			"columnDelimiter": ",",
