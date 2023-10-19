@@ -48,28 +48,11 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "Set variable2",
-							"type": "SetVariable",
-							"dependsOn": [],
-							"policy": {
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"variableName": "tablenamevar",
-								"value": {
-									"value": "@item().tablename",
-									"type": "Expression"
-								}
-							}
-						},
-						{
 							"name": "Copy data1",
 							"type": "Copy",
 							"dependsOn": [
 								{
-									"activity": "Set variable2",
+									"activity": "Lookup2",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -86,13 +69,18 @@
 							"typeProperties": {
 								"source": {
 									"type": "AzureSqlSource",
+									"sqlReaderQuery": {
+										"value": "select * from @item().tablename where createdate between @item().startdate and @activity('Lookup2').output",
+										"type": "Expression"
+									},
 									"queryTimeout": "02:00:00",
 									"partitionOption": "None"
 								},
 								"sink": {
 									"type": "AzureSqlSink",
 									"writeBehavior": "insert",
-									"sqlWriterUseTableLock": false
+									"sqlWriterUseTableLock": false,
+									"disableMetricsCollection": false
 								},
 								"enableStaging": false,
 								"translator": {
@@ -125,6 +113,73 @@
 									}
 								}
 							]
+						},
+						{
+							"name": "Lookup1",
+							"type": "Lookup",
+							"dependsOn": [
+								{
+									"activity": "Copy data1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": {
+										"value": "update config\r\nset startdate = @activity('Lookup2').output\r\nwhere tablename = @item.tablename",
+										"type": "Expression"
+									},
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"dataset": {
+									"referenceName": "AzureSqlTable2",
+									"type": "DatasetReference",
+									"parameters": {
+										"tablename": "@item().tablename"
+									}
+								}
+							}
+						},
+						{
+							"name": "Lookup2",
+							"type": "Lookup",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": "select top 1  createdate for @item().tablename order by createdate desc",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"dataset": {
+									"referenceName": "AzureSqlTable2",
+									"type": "DatasetReference",
+									"parameters": {
+										"tablename": "@item().tablename"
+									}
+								},
+								"firstRowOnly": false
+							}
 						}
 					]
 				}
