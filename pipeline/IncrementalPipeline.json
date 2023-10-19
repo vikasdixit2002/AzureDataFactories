@@ -137,7 +137,7 @@
 								"source": {
 									"type": "AzureSqlSource",
 									"sqlReaderQuery": {
-										"value": "update config\nset startdate = \"@{activity('Lookup2').output.createdate}\"\nwhere tablename = @item.tablename",
+										"value": "update config\nset startdate = \"@{activity('Lookup2').output.value.createdate}\"\nwhere tablename = @item.tablename",
 										"type": "Expression"
 									},
 									"queryTimeout": "02:00:00",
