@@ -379,7 +379,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"items": {
-								"value": "@activity('From Config Table').output.tablename",
+								"value": "@activity('From Config Table').output",
 								"type": "Expression"
 							},
 							"isSequential": true,
