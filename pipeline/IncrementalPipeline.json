@@ -70,7 +70,7 @@
 								"source": {
 									"type": "AzureSqlSource",
 									"sqlReaderQuery": {
-										"value": "select * from @{item().tablename} where createdate between @formatDateTime('@{item().startdate}', 'yyyy-MM-ddTHH:mm:ss') and @formatDateTime('@{activity('Lookup2').output.value}, 'yyyy-MM-ddTHH:mm:ss')'",
+										"value": "select * from @{item().tablename} where createdate between @formatDateTime('@{item().startdate}', 'yyyy-MM-ddTHH:mm:ss')and @formatDateTime('@{activity('Lookup2').output.value}, 'yyyy-MM-ddTHH:mm:ss')'",
 										"type": "Expression"
 									},
 									"queryTimeout": "02:00:00",
