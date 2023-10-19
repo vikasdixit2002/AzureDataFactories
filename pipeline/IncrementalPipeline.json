@@ -121,7 +121,7 @@
 									"referenceName": "AzureSqlTable2",
 									"type": "DatasetReference",
 									"parameters": {
-										"tablename": "@item(),desttablename"
+										"tablename": "@item().desttablename"
 									}
 								}
 							]
