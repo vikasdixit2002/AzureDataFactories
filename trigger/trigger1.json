@@ -1,0 +1,27 @@
+{
+	"name": "trigger1",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "StorageEvent",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"filename": "@triggerBody().fileName"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/movies/blobs/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/5ff8fe8f-597e-4676-ae24-d0114dfb055a/resourceGroups/az_storage/providers/Microsoft.Storage/storageAccounts/azstoragegen2",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
