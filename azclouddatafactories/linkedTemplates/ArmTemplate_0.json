@@ -31,6 +31,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_ADLSGen2'"
 		},
+		"csv_lnk_new_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'csv_lnk_new'"
+		},
 		"csv_ls_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'csv_ls'"
@@ -68,6 +72,10 @@
 			"defaultValue": "https://azstoragegen2.dfs.core.windows.net/"
 		},
 		"LS_ADLSGen2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azstoragegen2.dfs.core.windows.net/"
+		},
+		"csv_lnk_new_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://azstoragegen2.dfs.core.windows.net/"
 		},
@@ -283,6 +291,23 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/csv_lnk_new')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('csv_lnk_new_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('csv_lnk_new_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/csv_ls')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -483,10 +508,20 @@
 					"referenceName": "AzureSqlDatabase2",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"tablename": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "AzureSqlTable",
 				"schema": [],
-				"typeProperties": {}
+				"typeProperties": {
+					"table": {
+						"value": "@dataset().tablename",
+						"type": "Expression"
+					}
+				}
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase2')]"
@@ -511,37 +546,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase2')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_Filenames')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_ADLSGen2",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"datasetfoldername": {
-						"type": "string"
-					}
-				},
-				"annotations": [],
-				"type": "Binary",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"folderPath": {
-							"value": "@dataset().datasetfoldername",
-							"type": "Expression"
-						},
-						"fileSystem": "fficproddailyextract"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_ADLSGen2')]"
 			]
 		}
 	]

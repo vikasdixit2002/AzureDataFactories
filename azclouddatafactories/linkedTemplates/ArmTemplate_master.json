@@ -31,6 +31,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_ADLSGen2'"
 		},
+		"csv_lnk_new_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'csv_lnk_new'"
+		},
 		"csv_ls_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'csv_ls'"
@@ -71,6 +75,10 @@
 			"type": "string",
 			"defaultValue": "https://azstoragegen2.dfs.core.windows.net/"
 		},
+		"csv_lnk_new_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azstoragegen2.dfs.core.windows.net/"
+		},
 		"csv_ls_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://azstoragegen2.dfs.core.windows.net/"
@@ -98,6 +106,14 @@
 		"movies_ls_sink_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://azstoragegen2.dfs.core.windows.net/"
+		},
+		"trigger1_properties_StorageEvent_parameters_filename": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"trigger1_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/5ff8fe8f-597e-4676-ae24-d0114dfb055a/resourceGroups/az_storage/providers/Microsoft.Storage/storageAccounts/azstoragegen2"
 		},
 		"containerUri": {
 			"type": "string",
@@ -144,6 +160,9 @@
 					"LS_ADLSGen2_accountKey": {
 						"value": "[parameters('LS_ADLSGen2_accountKey')]"
 					},
+					"csv_lnk_new_accountKey": {
+						"value": "[parameters('csv_lnk_new_accountKey')]"
+					},
 					"csv_ls_accountKey": {
 						"value": "[parameters('csv_ls_accountKey')]"
 					},
@@ -173,6 +192,9 @@
 					},
 					"LS_ADLSGen2_properties_typeProperties_url": {
 						"value": "[parameters('LS_ADLSGen2_properties_typeProperties_url')]"
+					},
+					"csv_lnk_new_properties_typeProperties_url": {
+						"value": "[parameters('csv_lnk_new_properties_typeProperties_url')]"
 					},
 					"csv_ls_properties_typeProperties_url": {
 						"value": "[parameters('csv_ls_properties_typeProperties_url')]"
@@ -217,6 +239,32 @@
 			},
 			"dependsOn": [
 				"[resourceId('Microsoft.Resources/deployments', 'azclouddatafactories_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "azclouddatafactories_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"trigger1_properties_StorageEvent_parameters_filename": {
+						"value": "[parameters('trigger1_properties_StorageEvent_parameters_filename')]"
+					},
+					"trigger1_properties_typeProperties_scope": {
+						"value": "[parameters('trigger1_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'azclouddatafactories_ArmTemplate_1')]"
 			]
 		}
 	]

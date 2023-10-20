@@ -23,6 +23,9 @@
 		"LS_ADLSGen2_accountKey": {
 			"value": ""
 		},
+		"csv_lnk_new_accountKey": {
+			"value": ""
+		},
 		"csv_ls_accountKey": {
 			"value": ""
 		},
@@ -53,6 +56,9 @@
 		"LS_ADLSGen2_properties_typeProperties_url": {
 			"value": "https://azstoragegen2.dfs.core.windows.net/"
 		},
+		"csv_lnk_new_properties_typeProperties_url": {
+			"value": "https://azstoragegen2.dfs.core.windows.net/"
+		},
 		"csv_ls_properties_typeProperties_url": {
 			"value": "https://azstoragegen2.dfs.core.windows.net/"
 		},
@@ -73,6 +79,12 @@
 		},
 		"movies_ls_sink_properties_typeProperties_url": {
 			"value": "https://azstoragegen2.dfs.core.windows.net/"
+		},
+		"trigger1_properties_StorageEvent_parameters_filename": {
+			"value": "@triggerBody().fileName"
+		},
+		"trigger1_properties_typeProperties_scope": {
+			"value": "/subscriptions/5ff8fe8f-597e-4676-ae24-d0114dfb055a/resourceGroups/az_storage/providers/Microsoft.Storage/storageAccounts/azstoragegen2"
 		},
 		"containerUri": {
 			"value": ""
