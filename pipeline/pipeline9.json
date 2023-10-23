@@ -33,10 +33,11 @@
 					},
 					"enableStaging": false,
 					"enableSkipIncompatibleRow": true,
+					"validateDataConsistency": true,
 					"logSettings": {
 						"enableCopyActivityLog": true,
 						"copyActivityLogSettings": {
-							"logLevel": "Info",
+							"logLevel": "Warning",
 							"enableReliableLogging": false
 						},
 						"logLocationSettings": {
