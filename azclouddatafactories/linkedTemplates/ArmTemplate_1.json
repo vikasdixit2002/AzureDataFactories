@@ -155,7 +155,7 @@
 							"value": "@dataset().sourcefolder_ds",
 							"type": "Expression"
 						},
-						"fileSystem": "moviesource"
+						"fileSystem": "movies"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
