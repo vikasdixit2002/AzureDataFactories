@@ -18,7 +18,7 @@
 					},
 					"method": "POST",
 					"body": {
-						"value": "@json( string(pipeline().parameters.statusmessage))",
+						"value": "@json(string('pipeline().parameters.statusmessage'))",
 						"type": "Expression"
 					},
 					"timeout": "00:10:00"
