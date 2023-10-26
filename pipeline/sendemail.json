@@ -1,6 +1,38 @@
 {
 	"name": "sendemail",
 	"properties": {
+		"activities": [
+			{
+				"name": "WebHook1",
+				"type": "WebHook",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": {
+						"value": "@pipeline().parameters.webhookurl",
+						"type": "Expression"
+					},
+					"method": "POST",
+					"body": {
+						"value": "@json(pipeline().parameters.statusmessage)",
+						"type": "Expression"
+					},
+					"timeout": "00:10:00"
+				}
+			}
+		],
+		"parameters": {
+			"webhookurl": {
+				"type": "string"
+			},
+			"statusmessage": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
