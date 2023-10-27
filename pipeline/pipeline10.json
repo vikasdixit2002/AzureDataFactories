@@ -51,7 +51,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"sourcefolder_ds": "sink",
-							"filename": "test.json"
+							"filename": "test.csv"
 						}
 					}
 				]
