@@ -1,0 +1,47 @@
+{
+	"name": "lnkjson",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_json",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "dummyjson.json",
+				"folderPath": "source",
+				"fileSystem": "movies"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"dummyvaluearray": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"item": {
+								"type": "string"
+							},
+							"qty": {
+								"type": "string"
+							},
+							"val": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
