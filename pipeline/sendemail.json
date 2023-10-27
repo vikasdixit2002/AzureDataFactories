@@ -17,10 +17,6 @@
 						"type": "Expression"
 					},
 					"method": "POST",
-					"body": {
-						"value": "@json(string(''))",
-						"type": "Expression"
-					},
 					"timeout": "00:10:00"
 				}
 			}
