@@ -61,7 +61,7 @@
 								"source": {
 									"type": "AzureSqlSource",
 									"sqlReaderQuery": {
-										"value": "select * from @{item().tablename} where createdate between CONVERT(VARCHAR(10),@{item().startdate},21) and CONVERT(VARCHAR(10),@{item().enddate},21)",
+										"value": "select * from @{item().tablename} where createdate between @{item().startdate} and @{item().enddate}",
 										"type": "Expression"
 									},
 									"queryTimeout": "02:00:00",
