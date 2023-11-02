@@ -1,0 +1,16 @@
+{
+	"name": "lnkserver_config",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnlserver_config",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "configs"
+		}
+	}
+}
