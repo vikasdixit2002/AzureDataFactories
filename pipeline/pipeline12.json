@@ -23,7 +23,8 @@
 					"dataset": {
 						"referenceName": "lnkserver_config",
 						"type": "DatasetReference"
-					}
+					},
+					"firstRowOnly": false
 				}
 			},
 			{
