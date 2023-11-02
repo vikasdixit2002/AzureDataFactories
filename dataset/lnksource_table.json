@@ -8,13 +8,16 @@
 		"parameters": {
 			"sourcetable": {
 				"type": "string"
-			},
-			"destinationtable": {
-				"type": "string"
 			}
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
-		"schema": []
+		"schema": [],
+		"typeProperties": {
+			"table": {
+				"value": "@dataset().sourcetable",
+				"type": "Expression"
+			}
+		}
 	}
 }
