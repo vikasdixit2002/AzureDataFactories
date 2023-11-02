@@ -1,0 +1,20 @@
+{
+	"name": "lnksource_table",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase3",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sourcetable": {
+				"type": "string"
+			},
+			"destinationtable": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
