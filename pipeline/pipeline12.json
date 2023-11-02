@@ -60,7 +60,10 @@
 							"typeProperties": {
 								"source": {
 									"type": "AzureSqlSource",
-									"sqlReaderQuery": "select * from @{item().tablename} where createdate between @{item().startdate} and @{item().enddate}",
+									"sqlReaderQuery": {
+										"value": "select * from @{item().tablename} where createdate between CONVERT(VARCHAR(10),@{item().startdate},21) and CONVERT(VARCHAR(10),@{item().enddate},21)",
+										"type": "Expression"
+									},
 									"queryTimeout": "02:00:00",
 									"partitionOption": "None"
 								},
